@@ -1,0 +1,270 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    color: #222;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+header {
+    background: #212529;
+    color: white;
+    padding: 25px 0;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+
+header p {
+    color: #ddd;
+}
+
+nav {
+    background: #0d6efd;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 15px 10px;
+    display: block;
+    font-weight: bold;
+}
+
+nav a:hover {
+    background: #0b5ed7;
+}
+
+.hero {
+    background: linear-gradient(135deg, #0d6efd, #212529);
+    color: white;
+    padding: 90px 0;
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 42px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    max-width: 650px;
+    margin: 0 auto 30px;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.btn {
+    display: inline-block;
+    background: white;
+    color: #0d6efd;
+    padding: 13px 25px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.section {
+    padding: 70px 0;
+}
+
+.form-box {
+    background: white;
+    max-width: 650px;
+    margin: auto;
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.form-box h2,
+.workers-section h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #0d6efd;
+}
+
+.form-group small {
+    display: block;
+    margin-top: 5px;
+    min-height: 18px;
+    color: #dc3545;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 13px;
+    background: #0d6efd;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background: #0b5ed7;
+}
+
+#successMessage {
+    margin-top: 15px;
+    text-align: center;
+    color: #198754;
+    font-weight: bold;
+}
+
+.workers-section {
+    background: #e9ecef;
+}
+
+.worker-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.worker-card {
+    background: white;
+    padding: 22px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.worker-card h3 {
+    margin-bottom: 12px;
+    color: #0d6efd;
+}
+
+.worker-card p {
+    margin-bottom: 8px;
+}
+
+.delete-btn {
+    margin-top: 12px;
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 9px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background: #bb2d3b;
+}
+
+.empty-message {
+    text-align: center;
+    grid-column: 1 / -1;
+    color: #666;
+}
+
+footer {
+    background: #212529;
+    color: white;
+    text-align: center;
+    padding: 35px 0;
+}
+
+footer p {
+    color: #ccc;
+    margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+    .hero h2 {
+        font-size: 32px;
+    }
+
+    .worker-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .nav-container {
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    nav a {
+        padding: 12px 7px;
+        font-size: 14px;
+    }
+
+    .hero {
+        padding: 60px 0;
+    }
+
+    .hero h2 {
+        font-size: 27px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .form-box {
+        padding: 25px 20px;
+    }
+
+    .worker-list {
+        grid-template-columns: 1fr;
+    }
+}
