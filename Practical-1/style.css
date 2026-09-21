@@ -1,0 +1,177 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #212529;
+}
+
+.hero-section {
+    background: linear-gradient(135deg, #0d6efd, #212529);
+    color: white;
+    padding: 70px 0;
+}
+
+.min-vh-75 {
+    min-height: 75vh;
+}
+
+.carousel-content {
+    min-height: 330px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+    background: linear-gradient(135deg, #212529, #0d6efd);
+}
+
+.carousel-content h3 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.carousel-content p {
+    font-size: 1.05rem;
+}
+
+.section-padding {
+    padding: 80px 0;
+}
+
+.feature-icon {
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+.card {
+    border: none;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+}
+
+.services-section {
+    background: #f5f7fa;
+}
+
+.service-card {
+    background: white;
+    border-radius: 12px;
+    padding: 30px 15px;
+    text-align: center;
+    height: 100%;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+    transition: 0.3s;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+}
+
+.service-icon {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.service-card h5 {
+    margin-bottom: 10px;
+}
+
+.service-card p {
+    color: #6c757d;
+    margin-bottom: 0;
+}
+
+.step-box {
+    text-align: center;
+    padding: 25px 15px;
+}
+
+.step-number {
+    width: 55px;
+    height: 55px;
+    margin: 0 auto 15px;
+    border-radius: 50%;
+    background: #0d6efd;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.step-box p {
+    color: #6c757d;
+}
+
+.contact-section {
+    background: #f5f7fa;
+}
+
+.contact-box {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+}
+
+.footer {
+    background: #212529;
+    color: white;
+    padding: 35px 0;
+}
+
+.footer p {
+    color: #ced4da;
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 50px 0;
+    }
+
+    .hero-section h1 {
+        font-size: 2.3rem;
+    }
+
+    .carousel-content {
+        min-height: 280px;
+    }
+
+    .section-padding {
+        padding: 60px 0;
+    }
+
+    .contact-box {
+        padding: 25px;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+
+    .hero-section .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .carousel-content {
+        min-height: 250px;
+        padding: 25px;
+    }
+
+    .carousel-content h3 {
+        font-size: 1.5rem;
+    }
+
+    .section-padding {
+        padding: 50px 0;
+    }
+}
