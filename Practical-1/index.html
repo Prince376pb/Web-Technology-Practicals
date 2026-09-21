@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Labour Connect</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="#">Labour Connect</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#employment">Employment</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#services">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#how">How It Works</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<section id="home" class="hero-section">
+    <div class="container">
+        <div class="row align-items-center min-vh-75">
+            <div class="col-lg-7">
+                <span class="badge bg-warning text-dark mb-3">Skilled Employment & Local Services</span>
+                <h1 class="display-4 fw-bold">Find the Right Skill. Connect Locally.</h1>
+                <p class="lead">
+                    Labour Connect helps businesses find skilled workers and connects customers
+                    with reliable local service providers.
+                </p>
+                <div class="mt-4">
+                    <a href="#employment" class="btn btn-primary btn-lg me-2">Find a Worker</a>
+                    <a href="#services" class="btn btn-outline-light btn-lg">Find a Service</a>
+                </div>
+            </div>
+
+            <div class="col-lg-5 mt-5 mt-lg-0">
+                <div id="labourCarousel" class="carousel slide shadow-lg" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#labourCarousel" data-bs-slide-to="0" class="active"></button>
+                        <button type="button" data-bs-target="#labourCarousel" data-bs-slide-to="1"></button>
+                        <button type="button" data-bs-target="#labourCarousel" data-bs-slide-to="2"></button>
+                    </div>
+
+                    <div class="carousel-inner rounded">
+                        <div class="carousel-item active">
+                            <div class="carousel-content">
+                                <h3>Skilled Workers</h3>
+                                <p>Connect with workers based on skills and experience.</p>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item">
+                            <div class="carousel-content">
+                                <h3>Local Services</h3>
+                                <p>Find plumbers, electricians, carpenters and more.</p>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item">
+                            <div class="carousel-content">
+                                <h3>Easy Connection</h3>
+                                <p>Find, match, connect, complete and review.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="carousel-control-prev" type="button" data-bs-target="#labourCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </button>
+
+                    <button class="carousel-control-next" type="button" data-bs-target="#labourCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="employment" class="section-padding">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Employment Connect</h2>
+            <p class="text-muted">Connecting skilled workers with businesses and employers.</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <div class="feature-icon">👷</div>
+                        <h4 class="card-title">For Workers</h4>
+                        <p class="card-text">
+                            Create a profile, add your skills and experience, search for suitable
+                            jobs and apply for opportunities.
+                        </p>
+                        <a href="#contact" class="btn btn-primary">Join as Worker</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <div class="feature-icon">🏪</div>
+                        <h4 class="card-title">For Employers</h4>
+                        <p class="card-text">
+                            Post job requirements and find workers according to skills,
+                            experience, location and availability.
+                        </p>
+                        <a href="#contact" class="btn btn-primary">Post a Job</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <div class="feature-icon">🤝</div>
+                        <h4 class="card-title">Easy Connection</h4>
+                        <p class="card-text">
+                            Search, connect and complete employment opportunities through
+                            a simple platform.
+                        </p>
+                        <a href="#how" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="services" class="services-section section-padding">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">On-Demand Local Services</h2>
+            <p class="text-muted">Find skilled service providers for your everyday needs.</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h5>Plumber</h5>
+                    <p>Plumbing and repair services.</p>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h5>Electrician</h5>
+                    <p>Electrical installation and repair.</p>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="service-card">
+                    <div class="service-icon">🪚</div>
+                    <h5>Carpenter</h5>
+                    <p>Furniture and woodwork services.</p>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="service-card">
+                    <div class="service-icon">🔩</div>
+                    <h5>Mechanic</h5>
+                    <p>Vehicle repair and maintenance.</p>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="service-card">
+                    <div class="service-icon">🎨</div>
+                    <h5>Painter</h5>
+                    <p>Home and commercial painting.</p>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="service-card">
+                    <div class="service-icon">🔌</div>
+                    <h5>Appliance Repair</h5>
+                    <p>Repair services for home appliances.</p>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="service-card">
+                    <div class="service-icon">🧹</div>
+                    <h5>Cleaning</h5>
+                    <p>Home and local cleaning services.</p>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="service-card">
+                    <div class="service-icon">🏠</div>
+                    <h5>Home Repair</h5>
+                    <p>General household repair services.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="how" class="section-padding">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">How Labour Connect Works</h2>
+            <p class="text-muted">A simple process for finding and connecting with skilled people.</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-6 col-lg">
+                <div class="step-box">
+                    <div class="step-number">1</div>
+                    <h5>Find</h5>
+                    <p>Search for workers or services.</p>
+                </div>
+            </div>
+
+            <div class="col-6 col-lg">
+                <div class="step-box">
+                    <div class="step-number">2</div>
+                    <h5>Match</h5>
+                    <p>Check skills and requirements.</p>
+                </div>
+            </div>
+
+            <div class="col-6 col-lg">
+                <div class="step-box">
+                    <div class="step-number">3</div>
+                    <h5>Connect</h5>
+                    <p>Send a job or service request.</p>
+                </div>
+            </div>
+
+            <div class="col-6 col-lg">
+                <div class="step-box">
+                    <div class="step-number">4</div>
+                    <h5>Complete</h5>
+                    <p>Complete the work or service.</p>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg">
+                <div class="step-box">
+                    <div class="step-number">5</div>
+                    <h5>Review</h5>
+                    <p>Give ratings and reviews.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="contact-section section-padding">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="contact-box shadow">
+                    <div class="text-center mb-4">
+                        <h2 class="fw-bold">Connect With Labour Connect</h2>
+                        <p>Looking for a worker or a local service provider?</p>
+                    </div>
+
+                    <form>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Name</label>
+                                <input type="text" class="form-control" placeholder="Enter your name">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-control" placeholder="Enter your email">
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label">I am looking for</label>
+                                <select class="form-select">
+                                    <option selected>Select an option</option>
+                                    <option>Skilled Worker</option>
+                                    <option>Local Service Provider</option>
+                                    <option>Job Opportunity</option>
+                                </select>
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label">Message</label>
+                                <textarea class="form-control" rows="4" placeholder="Enter your requirement"></textarea>
+                            </div>
+
+                            <div class="col-12 text-center">
+                                <button type="submit" class="btn btn-primary px-5">Send Request</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container text-center">
+        <h5>Labour Connect</h5>
+        <p>Connecting skilled people with opportunities and local services.</p>
+        <p class="mb-0">© 2026 Labour Connect. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
