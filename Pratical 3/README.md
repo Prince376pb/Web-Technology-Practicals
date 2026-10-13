@@ -1,4 +1,4 @@
-#Practical 3
+
 # Labour Connect – ReactJS Web Application
 
 ## Aim
