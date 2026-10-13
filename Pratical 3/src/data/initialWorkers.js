@@ -1,0 +1,68 @@
+export const initialWorkers = [
+  {
+    id: "worker-demo-1",
+    name: "Ramesh Sharma",
+    email: "ramesh.sharma@example.com",
+    phone: "9876543210",
+    skill: "Plumber",
+    experience: 7,
+    location: "Mumbai - Andheri West",
+    createdAt: "2026-03-01T10:00:00.000Z",
+    isDemo: true
+  },
+  {
+    id: "worker-demo-2",
+    name: "Amit Kumar",
+    email: "amit.kumar@example.com",
+    phone: "9812345678",
+    skill: "Electrician",
+    experience: 5,
+    location: "Delhi - Rohini Sector 14",
+    createdAt: "2026-03-02T11:30:00.000Z",
+    isDemo: true
+  },
+  {
+    id: "worker-demo-3",
+    name: "Rajesh Mistri",
+    email: "rajesh.mistri@example.com",
+    phone: "9765432109",
+    skill: "Carpenter",
+    experience: 12,
+    location: "Bangalore - Indiranagar",
+    createdAt: "2026-03-03T09:15:00.000Z",
+    isDemo: true
+  },
+  {
+    id: "worker-demo-4",
+    name: "Sunil Verma",
+    email: "sunil.verma@example.com",
+    phone: "9845123456",
+    skill: "Mechanic",
+    experience: 8,
+    location: "Pune - Kothrud",
+    createdAt: "2026-03-04T14:20:00.000Z",
+    isDemo: true
+  },
+  {
+    id: "worker-demo-5",
+    name: "Deepak Yadav",
+    email: "deepak.yadav@example.com",
+    phone: "9912345670",
+    skill: "Painter",
+    experience: 4,
+    location: "Hyderabad - Madhapur",
+    createdAt: "2026-03-05T16:45:00.000Z",
+    isDemo: true
+  },
+  {
+    id: "worker-demo-6",
+    name: "Manoj Patil",
+    email: "manoj.patil@example.com",
+    phone: "9945678123",
+    skill: "Appliance Repair",
+    experience: 9,
+    location: "Chennai - T Nagar",
+    createdAt: "2026-03-06T12:00:00.000Z",
+    isDemo: true
+  }
+];
