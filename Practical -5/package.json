@@ -1,0 +1,15 @@
+{
+  "name": "labour-connect",
+  "version": "1.0.0",
+  "description": "Labour Connect - Skilled Worker & Service Platform",
+  "scripts": {
+    "install:all": "npm install && cd server && npm install && cd ../client && npm install",
+    "build": "cd client && npm install && npm run build && cd ../server && npm install",
+    "start": "node server/server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "serverless-http": "^4.0.0"
+  }
+}

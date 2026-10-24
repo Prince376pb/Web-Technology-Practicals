@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Assignment 2: Differentiate between HTML and HTML5 in terms of features and usage. Interactive comparison of Good HTML vs Bad HTML.">
+  <title>HTML vs HTML5: Semantic vs Non-Semantic Demonstration — Assignment 2</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --primary-light: #eff6ff;
+      --success: #16a34a;
+      --success-light: #f0fdf4;
+      --danger: #dc2626;
+      --danger-light: #fef2f2;
+      --warning: #d97706;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --bg-page: #f8fafc;
+      --bg-card: #ffffff;
+      --border-color: #e2e8f0;
+      --code-bg: #0f172a;
+      --radius: 12px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.08), 0 2px 4px -2px rgba(0,0,0,0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -4px rgba(0,0,0,0.04);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Top Academic Banner */
+    .academic-header {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #fff;
+      padding: 1.25rem 2rem;
+      border-bottom: 3px solid var(--primary);
+    }
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+    .inst-badge {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #94a3b8;
+      font-weight: 600;
+    }
+    .project-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #f8fafc;
+      margin-top: 0.2rem;
+    }
+    .student-badge {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      padding: 0.5rem 1rem;
+      text-align: right;
+    }
+    .student-badge .name {
+      font-weight: 600;
+      color: #38bdf8;
+      font-size: 0.95rem;
+    }
+    .student-badge .prn {
+      font-size: 0.8rem;
+      color: #cbd5e1;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Tab Navigation */
+    .nav-tabs-wrapper {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: var(--shadow-sm);
+    }
+    .nav-tabs {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      overflow-x: auto;
+      padding: 0.5rem 1.5rem 0;
+      gap: 0.5rem;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      padding: 0.75rem 1.25rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .tab-btn:hover {
+      color: var(--primary);
+      background-color: var(--primary-light);
+      border-radius: 6px 6px 0 0;
+    }
+    .tab-btn.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+    }
+    .tab-badge {
+      font-size: 0.72rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      background: #e2e8f0;
+      color: var(--text-main);
+    }
+    .tab-btn.active .tab-badge {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    /* Main Container */
+    .main-container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .tab-pane {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    .tab-pane.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Overview Cards */
+    .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .stat-card h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .stat-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* Comparison Split View */
+    .split-view {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+    @media (max-width: 900px) {
+      .split-view {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .preview-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+    .preview-header {
+      padding: 1rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .preview-header.good {
+      background: var(--success-light);
+      border-left: 5px solid var(--success);
+    }
+    .preview-header.bad {
+      background: var(--danger-light);
+      border-left: 5px solid var(--danger);
+    }
+    .preview-header h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .preview-header.good h4 { color: var(--success); }
+    .preview-header.bad h4 { color: var(--danger); }
+    .status-pill {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+    }
+    .status-pill.good {
+      background: #dcfce7;
+      color: #15803d;
+    }
+    .status-pill.bad {
+      background: #fee2e2;
+      color: #b91c1c;
+    }
+
+    .preview-body {
+      padding: 1.5rem;
+      min-height: 480px;
+    }
+
+    /* Code Block Styles */
+    .code-container {
+      background: var(--code-bg);
+      color: #e2e8f0;
+      padding: 1.25rem;
+      border-radius: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.84rem;
+      overflow-x: auto;
+      line-height: 1.5;
+      margin-top: 1rem;
+    }
+    .code-tag { color: #f43f5e; font-weight: 600; }
+    .code-attr { color: #38bdf8; }
+    .code-val { color: #facc15; }
+    .code-comment { color: #64748b; font-style: italic; }
+
+    /* Comparison Table */
+    .comp-table-container {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      overflow-x: auto;
+      box-shadow: var(--shadow-sm);
+      margin-top: 1.5rem;
+    }
+    .comp-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+      text-align: left;
+    }
+    .comp-table th {
+      background: #f1f5f9;
+      padding: 0.9rem 1.2rem;
+      font-weight: 700;
+      color: var(--text-main);
+      border-bottom: 2px solid var(--border-color);
+    }
+    .comp-table td {
+      padding: 0.9rem 1.2rem;
+      border-bottom: 1px solid var(--border-color);
+      vertical-align: top;
+    }
+    .comp-table tr:hover {
+      background-color: #f8fafc;
+    }
+    .feature-tag {
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    /* Semantic Tree Visualization */
+    .tree-view {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.88rem;
+      background: #f8fafc;
+      border: 1px dashed var(--border-color);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+    .tree-node {
+      margin-left: 1.2rem;
+      position: relative;
+      padding: 0.2rem 0;
+    }
+    .tree-node::before {
+      content: "├─ ";
+      color: #94a3b8;
+    }
+    .tree-node:last-child::before {
+      content: "└─ ";
+    }
+    .node-sem {
+      color: var(--success);
+      font-weight: 600;
+    }
+    .node-nonsem {
+      color: var(--danger);
+      font-weight: 600;
+    }
+
+    /* Explanation Banner */
+    .explain-banner {
+      background: var(--primary-light);
+      border-left: 4px solid var(--primary);
+      padding: 1rem 1.25rem;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 1.5rem;
+      font-size: 0.92rem;
+    }
+
+    /* Form preview elements */
+    .demo-form label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+    .demo-form input, .demo-form select, .demo-form textarea {
+      width: 100%;
+      padding: 0.6rem 0.8rem;
+      font-size: 0.9rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      margin-bottom: 0.9rem;
+      font-family: inherit;
+    }
+    .demo-form input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+    }
+    .demo-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .demo-btn:hover {
+      background: var(--primary-dark);
+    }
+    .demo-btn-danger {
+      background: var(--danger);
+    }
+
+    /* Footer */
+    footer.app-footer {
+      background: #0f172a;
+      color: #94a3b8;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 4rem;
+      font-size: 0.85rem;
+      border-top: 1px solid #1e293b;
+    }
+    footer.app-footer a {
+      color: #38bdf8;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Academic Header -->
+  <header class="academic-header">
+    <div class="header-content">
+      <div>
+        <div class="inst-badge">MIT Academy of Engineering, Alandi (D.), Pune</div>
+        <div class="project-title">Web Technology — Assignment 2</div>
+        <div style="font-size: 0.9rem; color: #cbd5e1; margin-top: 0.2rem;">
+          Differentiate Between HTML and HTML5: Features, Usage & Semantic vs. Non-Semantic Demonstration
+        </div>
+      </div>
+      <div class="student-badge">
+        <div class="name">Umang Ramteke</div>
+        <div class="prn">PRN: 202401100068</div>
+        <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 2px;">B.Tech Information Technology</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sticky Tab Bar -->
+  <nav class="nav-tabs-wrapper" aria-label="Assignment Navigation Tabs">
+    <div class="nav-tabs" role="tablist">
+      <button class="tab-btn active" onclick="switchTab('tab-preview')" role="tab" aria-selected="true" id="btn-preview">
+        <span>Live Web Page Demonstration</span>
+        <span class="tab-badge">Interactive</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('tab-code')" role="tab" aria-selected="false" id="btn-code">
+        <span>Good vs Bad Code Comparison</span>
+        <span class="tab-badge">Code Analysis</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('tab-matrix')" role="tab" aria-selected="false" id="btn-matrix">
+        <span>HTML vs HTML5 Feature Matrix</span>
+        <span class="tab-badge">12 Dimensions</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('tab-a11y')" role="tab" aria-selected="false" id="btn-a11y">
+        <span>Accessibility & DOM Tree</span>
+        <span class="tab-badge">A11y & SEO</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-container">
+
+    <!-- ============================================================== -->
+    <!-- TAB 1: LIVE DEMONSTRATION WEB PAGE -->
+    <!-- ============================================================== -->
+    <section id="tab-preview" class="tab-pane active" aria-labelledby="btn-preview">
+      <div class="explain-banner">
+        <strong>Assignment Demonstration Overview:</strong> Below is a side-by-side comparison of a modern company article & newsletter page. 
+        The left side is coded in <strong>Good HTML (HTML5 Semantic Standards)</strong>, and the right side demonstrates <strong>Bad HTML (HTML4 / Non-Semantic Div-Soup)</strong>.
+        Notice that while both can look somewhat similar to sighted users, their internal structure, accessibility, SEO discoverability, and native browser handling are completely different.
+      </div>
+
+      <div class="split-view">
+        
+        <!-- Good HTML5 Card -->
+        <article class="preview-box">
+          <div class="preview-header good">
+            <h4>
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/></svg>
+              Good HTML: Semantic HTML5 Architecture
+            </h4>
+            <span class="status-pill good">W3C & WHATWG Compliant</span>
+          </div>
+
+          <div class="preview-body">
+            <!-- Actual semantic markup rendered -->
+            <header style="border-bottom: 2px solid #e2e8f0; padding-bottom: 0.8rem; margin-bottom: 1rem;">
+              <h2 style="font-size: 1.25rem; color: #1e293b;">EcoTech Solutions Blog</h2>
+              <nav aria-label="Main Navigation">
+                <ul style="list-style: none; display: flex; gap: 1rem; font-size: 0.85rem; padding-top: 0.4rem;">
+                  <li><a href="#article" style="color: #2563eb; text-decoration: none; font-weight: 500;">Article</a></li>
+                  <li><a href="#subscribe" style="color: #2563eb; text-decoration: none; font-weight: 500;">Subscribe</a></li>
+                  <li><a href="#details" style="color: #2563eb; text-decoration: none; font-weight: 500;">FAQ</a></li>
+                </ul>
+              </nav>
+            </header>
+
+            <article id="article" style="margin-bottom: 1.5rem;">
+              <header>
+                <h3 style="font-size: 1.1rem; color: #0f172a;">Clean Energy Innovations for 2026</h3>
+                <p style="font-size: 0.8rem; color: #64748b;">
+                  Published on <time datetime="2026-10-15">October 15, 2026</time> by <address style="display: inline; font-style: normal; font-weight: 600;">Dr. Sarah Lin</address>
+                </p>
+              </header>
+
+              <p style="font-size: 0.88rem; margin: 0.6rem 0; color: #334155;">
+                Solar energy efficiency has reached an unprecedented milestone. Through multi-junction photovoltaic cells, conversion rates have surpassed <mark style="background: #fef08a; padding: 0 4px; border-radius: 2px;">32.5% in commercial pilots</mark>.
+              </p>
+
+              <figure style="margin: 0.8rem 0; border: 1px solid #e2e8f0; border-radius: 8px; padding: 0.6rem; background: #f8fafc; text-align: center;">
+                <svg width="60" height="40" viewBox="0 0 100 60" style="fill: #2563eb;">
+                  <polygon points="50,5 90,55 10,55"/>
+                </svg>
+                <figcaption style="font-size: 0.78rem; color: #64748b; margin-top: 4px;">Figure 1: Relative photovoltaic absorption efficiency</figcaption>
+              </figure>
+
+              <details style="background: #f1f5f9; padding: 0.6rem 0.8rem; border-radius: 6px; font-size: 0.85rem; margin-top: 0.8rem;">
+                <summary style="font-weight: 600; cursor: pointer; color: #1e293b;">Click to view technical specifications</summary>
+                <p style="margin-top: 0.5rem; font-size: 0.82rem; color: #475569;">
+                  Manufactured with gallium indium phosphide (GaInP) substrates, operational tolerance ranges from -40°C to +85°C with native anti-reflective passivation.
+                </p>
+              </details>
+            </article>
+
+            <!-- Semantic Form with native validation -->
+            <section id="subscribe" style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 1rem; margin-bottom: 1rem;">
+              <h4 style="font-size: 0.95rem; color: #1e40af; margin-bottom: 0.5rem;">Join Our Renewable Research Newsletter</h4>
+              <form class="demo-form" onsubmit="event.preventDefault(); alert('Form submitted successfully via native HTML5 validation!');">
+                <label for="sem-email">Your Work Email: <span style="color: #dc2626;">*</span></label>
+                <input type="email" id="sem-email" name="email" required placeholder="engineer@ecotech.org" autocomplete="email">
+
+                <label for="sem-year">Experience Level (1-40 Years):</label>
+                <input type="number" id="sem-year" name="experience" min="1" max="40" value="5">
+
+                <button type="submit" class="demo-btn">Subscribe (Native Validate)</button>
+              </form>
+            </section>
+
+            <footer style="border-top: 1px solid #e2e8f0; padding-top: 0.6rem; font-size: 0.75rem; color: #94a3b8; text-align: center;">
+              <small>&copy; 2026 EcoTech Research Inc. All rights reserved. Built with Semantic HTML5.</small>
+            </footer>
+          </div>
+        </article>
+
+        <!-- Bad HTML Card -->
+        <article class="preview-box">
+          <div class="preview-header bad">
+            <h4>
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg>
+              Bad HTML: Non-Semantic Div-Soup & Obsolete Markup
+            </h4>
+            <span class="status-pill bad">Legacy Anti-Patterns</span>
+          </div>
+
+          <div class="preview-body">
+            <!-- Simulated Bad Non-Semantic HTML -->
+            <div id="top-bar" style="border-bottom: 2px solid #e2e8f0; padding-bottom: 0.8rem; margin-bottom: 1rem;">
+              <div style="font-size: 1.25rem; font-weight: bold; color: #1e293b;">EcoTech Solutions Blog</div>
+              <div id="links" style="display: flex; gap: 1rem; font-size: 0.85rem; padding-top: 0.4rem;">
+                <div onclick="alert('Nav clicked');" style="color: blue; text-decoration: underline; cursor: pointer;">Article</div>
+                <div onclick="alert('Nav clicked');" style="color: blue; text-decoration: underline; cursor: pointer;">Subscribe</div>
+                <div onclick="alert('Nav clicked');" style="color: blue; text-decoration: underline; cursor: pointer;">FAQ</div>
+              </div>
+            </div>
+
+            <div class="content-box" style="margin-bottom: 1.5rem;">
+              <div style="font-size: 1.1rem; font-weight: bold; color: #0f172a;">Clean Energy Innovations for 2026</div>
+              <div style="font-size: 0.8rem; color: #64748b;">
+                Published on 15/10/2026 by <b><i>Dr. Sarah Lin</i></b>
+              </div>
+
+              <div style="font-size: 0.88rem; margin: 0.6rem 0; color: #334155;">
+                Solar energy efficiency has reached an unprecedented milestone. Through multi-junction photovoltaic cells, conversion rates have surpassed <span style="background-color: yellow;">32.5% in commercial pilots</span>.
+              </div>
+
+              <!-- Bad image layout with table and font tag -->
+              <table width="100%" border="0" style="background: #f8fafc; border: 1px dashed gray; margin: 0.8rem 0; text-align: center;">
+                <tr>
+                  <td>
+                    <svg width="60" height="40" viewBox="0 0 100 60" style="fill: #dc2626;">
+                      <polygon points="50,5 90,55 10,55"/>
+                    </svg>
+                    <br>
+                    <font size="1" color="#64748b">Figure 1: Relative photovoltaic absorption efficiency</font>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Bad fake disclosure via generic click handler -->
+              <div style="background: #f1f5f9; padding: 0.6rem 0.8rem; border-radius: 6px; font-size: 0.85rem; margin-top: 0.8rem;">
+                <div onclick="const d = document.getElementById('bad-specs'); d.style.display = (d.style.display==='none'?'block':'none');" style="font-weight: bold; cursor: pointer; color: #1e293b;">
+                  [+] Click to view technical specifications
+                </div>
+                <div id="bad-specs" style="display: none; margin-top: 0.5rem; font-size: 0.82rem; color: #475569;">
+                  Manufactured with gallium indium phosphide (GaInP) substrates, operational tolerance ranges from -40°C to +85°C with native anti-reflective passivation.
+                </div>
+              </div>
+            </div>
+
+            <!-- Bad Form: Generic inputs without labels or types, relying on fragile JS alert -->
+            <div style="background: #fef2f2; border: 1px solid #fecaca; border-radius: 8px; padding: 1rem; margin-bottom: 1rem;">
+              <div style="font-size: 0.95rem; font-weight: bold; color: #991b1b; margin-bottom: 0.5rem;">Join Our Renewable Research Newsletter</div>
+              
+              <div style="font-size: 0.85rem; font-weight: bold; margin-bottom: 0.3rem;">Your Work Email: *</div>
+              <input type="text" id="bad-email" placeholder="engineer@ecotech.org" style="width: 100%; padding: 0.6rem 0.8rem; font-size: 0.9rem; border: 1px solid #cbd5e1; border-radius: 6px; margin-bottom: 0.9rem;">
+
+              <div style="font-size: 0.85rem; font-weight: bold; margin-bottom: 0.3rem;">Experience Level:</div>
+              <input type="text" id="bad-year" value="5" style="width: 100%; padding: 0.6rem 0.8rem; font-size: 0.9rem; border: 1px solid #cbd5e1; border-radius: 6px; margin-bottom: 0.9rem;">
+
+              <div onclick="
+                const em = document.getElementById('bad-email').value;
+                if (!em.includes('@')) {
+                  alert('Bad HTML Alert: Please enter a valid email address manually!');
+                } else {
+                  alert('Bad HTML: Form submitted with no native browser validation.');
+                }
+              " style="display: inline-block; background: #dc2626; color: white; padding: 0.6rem 1.2rem; border-radius: 6px; font-weight: bold; cursor: pointer;">
+                Subscribe (Fake JS Div Button)
+              </div>
+            </div>
+
+            <div style="border-top: 1px solid #e2e8f0; padding-top: 0.6rem; font-size: 0.75rem; color: #94a3b8; text-align: center;">
+              <font color="gray">&copy; 2026 EcoTech Research Inc. All rights reserved. (Built with Div-Soup)</font>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- TAB 2: CODE ANALYSIS & SNIPPETS -->
+    <!-- ============================================================== -->
+    <section id="tab-code" class="tab-pane" aria-labelledby="btn-code">
+      <div class="overview-grid">
+        <div class="stat-card">
+          <h3><span style="color: var(--success);">✔</span> Good HTML Characteristics</h3>
+          <p>Uses standardized tags that describe <em>meaning</em> (<code class="node-sem">&lt;header&gt;</code>, <code class="node-sem">&lt;nav&gt;</code>, <code class="node-sem">&lt;main&gt;</code>, <code class="node-sem">&lt;article&gt;</code>). Accessible to screen readers out-of-the-box, optimized for search engines, and self-documenting for development teams.</p>
+        </div>
+        <div class="stat-card">
+          <h3><span style="color: var(--danger);">✖</span> Bad HTML Anti-Patterns</h3>
+          <p>Abuses meaningless containers (<code class="node-nonsem">&lt;div&gt;</code>, <code class="node-nonsem">&lt;span&gt;</code>), uses presentational markup (<code class="node-nonsem">&lt;font&gt;</code>, <code class="node-nonsem">&lt;center&gt;</code>, <code class="node-nonsem">&lt;b&gt;</code>), attaches click events to non-interactive elements, and omits essential form associations.</p>
+        </div>
+      </div>
+
+      <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.2rem; margin: 1.5rem 0 0.5rem;">Example 1: Document Structure & Page Layout</h3>
+      <div class="split-view" style="margin-top: 0.5rem;">
+        <div>
+          <div class="preview-header good"><h4>Good HTML5 Semantic Layout</h4></div>
+          <div class="code-container">
+<span class="code-comment">&lt;!-- Clean, self-documenting semantic landmarks --&gt;</span>
+<span class="code-tag">&lt;header&gt;</span>
+  <span class="code-tag">&lt;h1&gt;</span>EcoTech Solutions<span class="code-tag">&lt;/h1&gt;</span>
+  <span class="code-tag">&lt;nav</span> <span class="code-attr">aria-label</span>=<span class="code-val">"Primary"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;ul&gt;</span>
+      <span class="code-tag">&lt;li&gt;&lt;a</span> <span class="code-attr">href</span>=<span class="code-val">"/news"</span><span class="code-tag">&gt;</span>News<span class="code-tag">&lt;/a&gt;&lt;/li&gt;</span>
+      <span class="code-tag">&lt;li&gt;&lt;a</span> <span class="code-attr">href</span>=<span class="code-val">"/contact"</span><span class="code-tag">&gt;</span>Contact<span class="code-tag">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="code-tag">&lt;/ul&gt;</span>
+  <span class="code-tag">&lt;/nav&gt;</span>
+<span class="code-tag">&lt;/header&gt;</span>
+
+<span class="code-tag">&lt;main&gt;</span>
+  <span class="code-tag">&lt;article&gt;</span>
+    <span class="code-tag">&lt;header&gt;</span>
+      <span class="code-tag">&lt;h2&gt;</span>Clean Energy 2026<span class="code-tag">&lt;/h2&gt;</span>
+      <span class="code-tag">&lt;time</span> <span class="code-attr">datetime</span>=<span class="code-val">"2026-10-15"</span><span class="code-tag">&gt;</span>Oct 15, 2026<span class="code-tag">&lt;/time&gt;</span>
+    <span class="code-tag">&lt;/header&gt;</span>
+    <span class="code-tag">&lt;p&gt;</span>Article content here...<span class="code-tag">&lt;/p&gt;</span>
+  <span class="code-tag">&lt;/article&gt;</span>
+<span class="code-tag">&lt;/main&gt;</span>
+
+<span class="code-tag">&lt;footer&gt;</span>
+  <span class="code-tag">&lt;small&gt;</span>&amp;copy; 2026 EcoTech Inc.<span class="code-tag">&lt;/small&gt;</span>
+<span class="code-tag">&lt;/footer&gt;</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="preview-header bad"><h4>Bad HTML Legacy Div-Soup</h4></div>
+          <div class="code-container">
+<span class="code-comment">&lt;!-- Div soup: Zero meaning, fragile and inaccessible --&gt;</span>
+<span class="code-tag">&lt;div</span> <span class="code-attr">id</span>=<span class="code-val">"header"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-val">"big-title"</span><span class="code-tag">&gt;</span>EcoTech Solutions<span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">id</span>=<span class="code-val">"navbar"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;div</span> <span class="code-attr">onclick</span>=<span class="code-val">"gotoNews()"</span><span class="code-tag">&gt;</span>News<span class="code-tag">&lt;/div&gt;</span>
+    <span class="code-tag">&lt;div</span> <span class="code-attr">onclick</span>=<span class="code-val">"gotoContact()"</span><span class="code-tag">&gt;</span>Contact<span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;/div&gt;</span>
+<span class="code-tag">&lt;/div&gt;</span>
+
+<span class="code-tag">&lt;div</span> <span class="code-attr">id</span>=<span class="code-val">"body-wrapper"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-val">"post-container"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-val">"post-headline"</span><span class="code-tag">&gt;</span>Clean Energy 2026<span class="code-tag">&lt;/div&gt;</span>
+    <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-val">"date-text"</span><span class="code-tag">&gt;</span>Oct 15, 2026<span class="code-tag">&lt;/div&gt;</span>
+    <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-val">"desc"</span><span class="code-tag">&gt;</span>Article content here...<span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;/div&gt;</span>
+<span class="code-tag">&lt;/div&gt;</span>
+
+<span class="code-tag">&lt;div</span> <span class="code-attr">id</span>=<span class="code-val">"footer-section"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;font</span> <span class="code-attr">size</span>=<span class="code-val">"1"</span><span class="code-tag">&gt;</span>&amp;copy; 2026 EcoTech Inc.<span class="code-tag">&lt;/font&gt;</span>
+<span class="code-tag">&lt;/div&gt;</span>
+          </div>
+        </div>
+      </div>
+
+      <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.2rem; margin: 2rem 0 0.5rem;">Example 2: Form Controls & Validation</h3>
+      <div class="split-view" style="margin-top: 0.5rem;">
+        <div>
+          <div class="preview-header good"><h4>Good HTML5 Semantic Form</h4></div>
+          <div class="code-container">
+<span class="code-tag">&lt;form</span> <span class="code-attr">action</span>=<span class="code-val">"/submit"</span> <span class="code-attr">method</span>=<span class="code-val">"POST"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;fieldset&gt;</span>
+    <span class="code-tag">&lt;legend&gt;</span>Account Registration<span class="code-tag">&lt;/legend&gt;</span>
+
+    <span class="code-comment">&lt;!-- Explicit programmatic association via for/id --&gt;</span>
+    <span class="code-tag">&lt;label</span> <span class="code-attr">for</span>=<span class="code-val">"user-email"</span><span class="code-tag">&gt;</span>Email Address:<span class="code-tag">&lt;/label&gt;</span>
+    <span class="code-tag">&lt;input</span> 
+      <span class="code-attr">type</span>=<span class="code-val">"email"</span> 
+      <span class="code-attr">id</span>=<span class="code-val">"user-email"</span> 
+      <span class="code-attr">required</span> 
+      <span class="code-attr">autocomplete</span>=<span class="code-val">"email"</span>
+      <span class="code-attr">placeholder</span>=<span class="code-val">"user@example.com"</span><span class="code-tag">&gt;</span>
+
+    <span class="code-tag">&lt;label</span> <span class="code-attr">for</span>=<span class="code-val">"user-phone"</span><span class="code-tag">&gt;</span>Phone (10 digits):<span class="code-tag">&lt;/label&gt;</span>
+    <span class="code-tag">&lt;input</span> 
+      <span class="code-attr">type</span>=<span class="code-val">"tel"</span> 
+      <span class="code-attr">id</span>=<span class="code-val">"user-phone"</span> 
+      <span class="code-attr">pattern</span>=<span class="code-val">"^[6-9][0-9]{9}$"</span> 
+      <span class="code-attr">required</span><span class="code-tag">&gt;</span>
+
+    <span class="code-tag">&lt;button</span> <span class="code-attr">type</span>=<span class="code-val">"submit"</span><span class="code-tag">&gt;</span>Register<span class="code-tag">&lt;/button&gt;</span>
+  <span class="code-tag">&lt;/fieldset&gt;</span>
+<span class="code-tag">&lt;/form&gt;</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="preview-header bad"><h4>Bad HTML Unstructured Form</h4></div>
+          <div class="code-container">
+<span class="code-comment">&lt;!-- No label binding, un-typed inputs, fragile inline scripts --&gt;</span>
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-val">"form-wrapper"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;div&gt;</span>Account Registration<span class="code-tag">&lt;/div&gt;</span>
+
+  Email Address:
+  <span class="code-tag">&lt;input</span> <span class="code-attr">type</span>=<span class="code-val">"text"</span> <span class="code-attr">id</span>=<span class="code-val">"txtEmail"</span><span class="code-tag">&gt;</span>
+  
+  Phone:
+  <span class="code-tag">&lt;input</span> <span class="code-attr">type</span>=<span class="code-val">"text"</span> <span class="code-attr">id</span>=<span class="code-val">"txtPhone"</span><span class="code-tag">&gt;</span>
+
+  <span class="code-comment">&lt;!-- Fake button with non-standard event handling --&gt;</span>
+  <span class="code-tag">&lt;span</span> 
+    <span class="code-attr">class</span>=<span class="code-val">"button"</span> 
+    <span class="code-attr">onclick</span>=<span class="code-val">"checkData()"</span><span class="code-tag">&gt;</span>
+    Register
+  <span class="code-tag">&lt;/span&gt;</span>
+<span class="code-tag">&lt;/div&gt;</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- TAB 3: FEATURE MATRIX -->
+    <!-- ============================================================== -->
+    <section id="tab-matrix" class="tab-pane" aria-labelledby="btn-matrix">
+      <div class="explain-banner">
+        <strong>Comprehensive Theoretical Differentiation:</strong> Below is a complete 12-dimensional comparison table contrasting classic <strong>HTML (HTML 4.01 / XHTML)</strong> with modern <strong>HTML5</strong>.
+      </div>
+
+      <div class="comp-table-container">
+        <table class="comp-table">
+          <thead>
+            <tr>
+              <th style="width: 20%;">Dimension / Feature</th>
+              <th style="width: 40%;">Traditional HTML (HTML 4.01 / XHTML 1.0)</th>
+              <th style="width: 40%;">Modern HTML5 (Living Standard)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="feature-tag">1. DOCTYPE Declaration</td>
+              <td>Lengthy, complex, and SGML-based:<br><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"&gt;</code></td>
+              <td>Extremely simple, clean, and case-insensitive:<br><code>&lt;!DOCTYPE html&gt;</code></td>
+            </tr>
+            <tr>
+              <td class="feature-tag">2. Semantic Elements</td>
+              <td>Lacks structural semantics. Relies completely on generic <code>&lt;div&gt;</code> and <code>&lt;span&gt;</code> tags with arbitrary classes and IDs.</td>
+              <td>Rich native semantic tags: <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;footer&gt;</code>, <code>&lt;figure&gt;</code>, <code>&lt;time&gt;</code>, <code>&lt;mark&gt;</code>.</td>
+            </tr>
+            <tr>
+              <td class="feature-tag">3. Audio & Video Support</td>
+              <td>No native multimedia tags. Required third-party browser plugins like Adobe Flash, Apple QuickTime, or Silverlight.</td>
+              <td>Native multimedia support via <code>&lt;video&gt;</code> and <code>&lt;audio&gt;</code> tags with built-in hardware acceleration and captioning (<code>&lt;track&gt;</code>).</td>
+            </tr>
+            <tr>
+              <td class="feature-tag">4. 2D & 3D Graphics</td>
+              <td>Vector graphics and dynamic 2D drawing required external plugins (Flash, Java Applets, VML).</td>
+              <td>Native 2D raster drawing via <code>&lt;canvas&gt;</code> API and native inline scalable vector graphics via <code>&lt;svg&gt;</code>, plus WebGL for 3D.</td>
+            </tr>
+            <tr>
+              <td class="feature-tag">5. Client-Side Data Storage</td>
+              <td>Limited to HTTP Cookies (approx. 4 KB per cookie), transmitted with every single HTTP header, slowing down network requests.</td>
+              <td>Modern Web Storage: <code>localStorage</code> (5-10 MB), <code>sessionStorage</code>, and client-side NoSQL database (<code>IndexedDB</code>).</td>
+            </tr>
+            <tr>
+              <td class="feature-tag">6. Form Controls & Validation</td>
+              <td>Only basic types (<code>text</code>, <code>password</code>, <code>checkbox</code>, <code>radio</code>). Form validation required custom, error-prone client JavaScript.</td>
+              <td>Rich input types (<code>email</code>, <code>tel</code>, <code>url</code>, <code>number</code>, <code>date</code>, <code>range</code>, <code>color</code>) and native declarative validation (<code>required</code>, <code>pattern</code>, <code>min</code>, <code>max</code>).</td>
+            </tr>
+            <tr>
+              <td class="feature-tag">7. Mobile & Viewport Control</td>
+              <td>Not designed for mobile devices; fixed desktop-oriented page assumptions. Zooming and scaling were unstandardized.</td>
+              <td>Mobile-first architecture: native <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code> and media query support.</td>
+            </tr>
+            <tr>
+              <td class="feature-tag">8. Multithreading / Concurrency</td>
+              <td>Strictly single-threaded. Heavy JavaScript execution froze the browser UI and user interactions.</td>
+              <td>True multithreading in the browser via the <strong>Web Workers API</strong>, enabling heavy background calculations without freezing the UI.</td>
+            </tr>
+            <tr>
+              <td class="feature-tag">9. Real-Time Communication</td>
+              <td>Long-polling, Comet, or periodic AJAX polling, causing high HTTP header overhead and latency.</td>
+              <td>Full-duplex, real-time bi-directional communication via the native <strong>WebSocket API</strong> and Server-Sent Events (SSE).</td>
+            </tr>
+            <tr>
+              <td class="feature-tag">10. Geolocation & Device APIs</td>
+              <td>No standard browser API. Depended on unreliable IP lookup services or browser-specific toolbars.</td>
+              <td>Standardized <strong>Geolocation API</strong> (<code>navigator.geolocation</code>), Device Orientation, Fullscreen, and Battery Status APIs.</td>
+            </tr>
+            <tr>
+              <td class="feature-tag">11. Deprecated Presentational Tags</td>
+              <td>Allowed presentation tags directly inside HTML: <code>&lt;font&gt;</code>, <code>&lt;center&gt;</code>, <code>&lt;big&gt;</code>, <code>&lt;strike&gt;</code>, <code>&lt;frame&gt;</code>, <code>&lt;frameset&gt;</code>.</td>
+              <td>Completely removed/deprecated presentational elements, strictly enforcing the separation of structure (HTML) and presentation (CSS3).</td>
+            </tr>
+            <tr>
+              <td class="feature-tag">12. Error Handling & Parsing</td>
+              <td>Ambiguous parsing rules; different browsers rendered broken HTML syntax in wildly inconsistent and unpredictable ways.</td>
+              <td>Precise, deterministic parsing algorithm defined by WHATWG/W3C, ensuring consistent error recovery across all conforming browsers.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- TAB 4: ACCESSIBILITY & DOM TREE -->
+    <!-- ============================================================== -->
+    <section id="tab-a11y" class="tab-pane" aria-labelledby="btn-a11y">
+      <div class="explain-banner">
+        <strong>Accessibility (A11y) & Screen Reader Tree:</strong> Assistive technologies (like NVDA, JAWS, and VoiceOver) do not see visual CSS styles. 
+        They parse the <strong>Accessibility Tree</strong> exposed by HTML tags. Notice how semantic tags provide instant navigational landmarks, while div soup presents a flat, unnavigable wall of generic text.
+      </div>
+
+      <div class="split-view">
+        <div>
+          <div class="preview-header good">
+            <h4>Good HTML: Rich Accessibility Tree</h4>
+          </div>
+          <div class="preview-body" style="min-height: auto;">
+            <p style="font-size: 0.88rem; color: #475569;">
+              Screen readers can press shortcut keys (e.g. <code>H</code> for headings, <code>D</code> for landmarks) to jump directly across the document:
+            </p>
+            <div class="tree-view">
+              <div><strong>Document</strong> (EcoTech Solutions)</div>
+              <div class="tree-node"><span class="node-sem">Landmark: banner</span> (&lt;header&gt;)</div>
+              <div class="tree-node" style="margin-left: 2.4rem;">Heading level 1: "EcoTech Solutions Blog"</div>
+              <div class="tree-node" style="margin-left: 2.4rem;"><span class="node-sem">Landmark: navigation</span> (&lt;nav aria-label="Main"&gt;)</div>
+              <div class="tree-node" style="margin-left: 3.6rem;">List: 3 items (Article, Subscribe, FAQ)</div>
+              <div class="tree-node"><span class="node-sem">Landmark: main</span> (&lt;main&gt;)</div>
+              <div class="tree-node" style="margin-left: 2.4rem;"><span class="node-sem">Article</span> (&lt;article&gt;)</div>
+              <div class="tree-node" style="margin-left: 3.6rem;">Heading level 2: "Clean Energy Innovations"</div>
+              <div class="tree-node" style="margin-left: 3.6rem;">Time: "October 15, 2026"</div>
+              <div class="tree-node" style="margin-left: 3.6rem;">Figure: "Figure 1: Relative absorption..."</div>
+              <div class="tree-node" style="margin-left: 3.6rem;"><span class="node-sem">Button: "Technical specifications" (Expanded: false)</span></div>
+              <div class="tree-node"><span class="node-sem">Landmark: region</span> (&lt;section id="subscribe"&gt;)</div>
+              <div class="tree-node" style="margin-left: 2.4rem;">Form: "Join Our Newsletter"</div>
+              <div class="tree-node" style="margin-left: 3.6rem;">Entry: Email (Required, Autocomplete: email)</div>
+              <div class="tree-node"><span class="node-sem">Landmark: contentinfo</span> (&lt;footer&gt;)</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="preview-header bad">
+            <h4>Bad HTML: Broken / Flat Accessibility Tree</h4>
+          </div>
+          <div class="preview-body" style="min-height: auto;">
+            <p style="font-size: 0.88rem; color: #b91c1c;">
+              Screen reader cannot identify landmarks or interactive controls, reading everything as disconnected text blocks:
+            </p>
+            <div class="tree-view">
+              <div><strong>Document</strong> (No Landmarks Found)</div>
+              <div class="tree-node"><span class="node-nonsem">Generic text:</span> "EcoTech Solutions Blog" (No heading role!)</div>
+              <div class="tree-node"><span class="node-nonsem">Generic text:</span> "Article" (Not recognized as link/button!)</div>
+              <div class="tree-node"><span class="node-nonsem">Generic text:</span> "Subscribe" (Not keyboard focusable!)</div>
+              <div class="tree-node"><span class="node-nonsem">Generic text:</span> "Clean Energy Innovations" (No heading level!)</div>
+              <div class="tree-node"><span class="node-nonsem">Table:</span> 1 row, 1 column (Used for visual layout - confuses A11y!)</div>
+              <div class="tree-node"><span class="node-nonsem">Generic text:</span> "[+] Click to view specs" (Ignored by tab key!)</div>
+              <div class="tree-node"><span class="node-nonsem">Entry field:</span> Unlabelled (Screen reader announces "Edit text, blank")</div>
+              <div class="tree-node"><span class="node-nonsem">Generic text:</span> "Subscribe" (Div with onclick - invisible to screen reader button list!)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- App Footer -->
+  <footer class="app-footer">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <p style="font-weight: 600; color: #f8fafc; margin-bottom: 0.3rem;">MIT Academy of Engineering — Department of Information Technology</p>
+      <p>Web Technology Laboratory Assignment 2 • Prepared by Umang Ramteke (PRN: 202401100068)</p>
+      <p style="margin-top: 0.5rem; font-size: 0.8rem;">
+        Assignment Statement: Differentiate between HTML and HTML5 in terms of features and usage. Illustrate with good vs. bad HTML examples and a web page demonstration.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Tab Switch Script -->
+  <script>
+    function switchTab(tabId) {
+      // Deactivate all panes
+      document.querySelectorAll('.tab-pane').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-selected', 'false');
+      });
+
+      // Activate selected
+      const activePane = document.getElementById(tabId);
+      if (activePane) {
+        activePane.classList.add('active');
+      }
+
+      // Update button state
+      const btnMap = {
+        'tab-preview': 'btn-preview',
+        'tab-code': 'btn-code',
+        'tab-matrix': 'btn-matrix',
+        'tab-a11y': 'btn-a11y'
+      };
+      const activeBtn = document.getElementById(btnMap[tabId]);
+      if (activeBtn) {
+        activeBtn.classList.add('active');
+        activeBtn.setAttribute('aria-selected', 'true');
+      }
+    }
+  </script>
+</body>
+</html>
