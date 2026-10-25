@@ -26,7 +26,7 @@ This project demonstrates CRUD operations, server-side validation and API testin
 - SQLite
 - REST API
 - Postman
-- HTML, CSS and JavaScript (for the frontend, if included)
+- HTML, CSS and JavaScript 
 
 ## Project Structure
 
